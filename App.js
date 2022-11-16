@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ToastAndroid } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { RadioButton } from 'react-native-paper';
 
@@ -26,28 +26,23 @@ export default function App() {
   const checkInput = () => {
 
     if (!name.trim()) {
-      alert('Please Enter Name');
+      // Alert.alert('Please Enter Name of Trip');
+      ToastAndroid.show('Please')
       return;
     }
     if (!des.trim()) {
-      alert('Please Enter Destination');
+      Alert.alert('Please Enter Destination');
       return;
     }
     if (!risk.trim()) {
-      alert('Please Require Risks');
+      Alert.alert('Please Require Risks');
       return;
     }
-    if (!desc.trim()) {
-      alert('Please Enter Destination');
-      return;
-    }
-    //Checked Successfully
-    //Do whatever you want
-    //alert('Success !!!');
     Alert.alert('Details entered', 'Name: ' + name + '\nDestination: ' + des
       + '\nDate: ' + date + '\nRisks: ' + risk + '\nDescription: ' + desc);
   };
 
+  
 
   return (
     <View style={styles.main}>
@@ -126,7 +121,6 @@ export default function App() {
         </TextInput>
         <View style={styles.buttonAdd}>
           <Button
-
             color='#6a994e'
             title="Add Trip" onPress={checkInput}
           ></Button>
@@ -161,7 +155,7 @@ const styles = StyleSheet.create({
   },
 
   position: {
-    margin: 15,
+    margin: 20,
   },
 
   text: {
@@ -173,7 +167,7 @@ const styles = StyleSheet.create({
   input: {
     height: 42,
     marginLeft: 20,
-    marginBottom: 10,
+    marginBottom: 20,
     marginRight: 20,
     padding: 10,
     borderWidth: 1,
@@ -184,9 +178,9 @@ const styles = StyleSheet.create({
   inputDesc: {
     height: 80,
     marginLeft: 20,
-    marginBottom: 10,
+    marginBottom: 20,
     marginRight: 20,
-    padding: 10,
+    paddingLeft: 10,
     borderWidth: 1,
     borderColor: 'green',
     borderRadius: 12,
@@ -195,7 +189,7 @@ const styles = StyleSheet.create({
   date: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   inputDate: {
     height: 42,
@@ -224,6 +218,8 @@ const styles = StyleSheet.create({
   buttonAdd: {
     marginTop: 15,
     marginHorizontal: 130,
+    marginLeft: 20,
+    marginRight: 20
   }
 
 });

@@ -51,10 +51,27 @@ export default function App() {
           onChangeText={(text) => setDes(text)}>
         </TextInput>
 
-       
+        <Text style = {styles.text}>Date of the Trip</Text>
 
+        <View style = {styles.date}>
+          <TextInput
+            style={styles.inputDate}
+            value={date ? date.toLocaleDateString(): "Date"}
+            onChangeText={text => setDate(text)}
+          ></TextInput>
+          
+          <Button
+            style = {styles.button}
+            color ='#6a994e'
+            title="Choose date" onPress={showDatePicker} 
+          ></Button>
 
-        
+          <DateTimePickerModal
+            isVisible={isDateVisible}
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+          ></DateTimePickerModal>   
+        </View>         
         
       </View>
 
@@ -104,6 +121,23 @@ const styles = StyleSheet.create({
     borderColor:'green',
     borderRadius: 12,
     backgroundColor: 'white'
+  },
+  date : {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 25,
+  },
+  inputDate: {
+    height: 42,
+    marginLeft: 20,
+    marginRight: 20,
+    paddingLeft: 60,
+    width: 200,
+    fontSize: 18,
+    borderWidth:1,
+    borderColor:'green',
+    borderRadius: 12,
+    backgroundColor: 'white',
   },
   
 
